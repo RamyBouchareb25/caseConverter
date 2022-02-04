@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300&display=swap");
 body
 {
     background: url("Background.PNG") no-repeat center center/100%;
-}*
+}
 .container
 {
     display: flex;
@@ -14,7 +13,7 @@ body
 button
 {
     width: 25%;
-    padding: 1% 0% 1% 0%;
+    padding: 1% 0 1% 0;
     font-size: 15px;
     border-style: solid;
     border-width: 1px;
@@ -45,7 +44,7 @@ button:hover
 }
 textarea
 {
-    font-family: Georgia;
+    font-family: Georgia, serif;
     font-size: 15px;
     font-weight: bolder;
 }

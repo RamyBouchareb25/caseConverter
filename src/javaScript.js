@@ -12,6 +12,10 @@ let j =0;
 let k =0;
 let l =0;
 let sentenceCaseString = "";
+let stop = false;
+let stop2 = false;
+const regex = /[A-Z]/g;
+const regex2 = /[a-z]/g;
 
 lowerCase.onclick = function (){
     textarea.value = textarea.value.toLowerCase();
@@ -25,14 +29,17 @@ properCase.onclick = function () {
     stringCut = stringToChange.split(" ");
     numberOfWords = stringCut.length;
     for (let l=0 ; l<numberOfWords ; l++) {
-        if (stringCut == "") {
-            l++;
+        stop2 = false;
+        while (!stop && k<=stringCut[l].length) {
+            if (stringCut[l][k].match(regex) === null && stringCut[l][k].match(regex2) === null){
+                k++;
+            } else {
+                stop = true;
+            }
         }
-        while (stringCut[l][k] == " " || stringCut[l][k] == ".")
-        {
-            k++;
+        if(stop) {
+            stringCut[l] = stringCut[l].replace(stringCut[l][k], stringCut[l][k].toUpperCase());
         }
-        stringCut[l] = stringCut[l].replace(stringCut[l][k], stringCut[l][k].toUpperCase());
     }
     properCaseString = stringCut.join(" ");
     textarea.value = properCaseString;
@@ -43,11 +50,18 @@ sentenceCase.onclick = function () {
     stringCut = stringToChange.split(".");
     numberOfSentences = stringCut.length;
     for (let i=0 ; i<numberOfSentences ; i++) {
-        while (stringCut[i][j] == " ")
+        console.log(j, stringCut[i].length,stop2);
+        stop2 = false;
+        while (!stop2 && j<stringCut[i].length)
         {
-            j++;
+            if(stringCut[i][j].match(regex) === null && stringCut[i][j].match(regex2) === null){
+                j++;
+            } else {
+                stop2 = true;
+            }
+        } if(stop2) {
+            stringCut[i] = stringCut[i].replace(stringCut[i][j], stringCut[i][j].toUpperCase());
         }
-        stringCut[i] = stringCut[i].replace(stringCut[i][j], stringCut[i][j].toUpperCase());
     }
     sentenceCaseString = stringCut.join(".");
     textarea.value = sentenceCaseString;
