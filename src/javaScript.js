@@ -3,6 +3,7 @@ let lowerCase = document.getElementById("lower-case");
 let upperCase = document.getElementById("upper-case");
 let properCase = document.getElementById("proper-case");
 let sentenceCase = document.getElementById("sentence-case");
+let downloadButton = document.getElementById("save-text-file");
 let properCaseString = "";
 let stringToChange = "";
 let stringCut = "";
@@ -16,7 +17,15 @@ let stop = false;
 let stop2 = false;
 const regex = /[A-Z]/g;
 const regex2 = /[a-z]/g;
-
+function download(fileName, text) {
+    let element = document.createElement('a');
+    element.setAttribute("href", "data:text/plain;charset=utf-8," + text);
+    element.setAttribute("download", fileName);
+    element.style.display = "none";
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
 lowerCase.onclick = function (){
     textarea.value = textarea.value.toLowerCase();
 }
@@ -24,6 +33,7 @@ upperCase.onclick = function () {
     textarea.value = textarea.value.toUpperCase();
 }
 properCase.onclick = function () {
+    k=0;
     stringToChange = textarea.value.toLowerCase();
     stringToChange = stringToChange.trim();
     stringCut = stringToChange.split(" ");
@@ -45,6 +55,7 @@ properCase.onclick = function () {
     textarea.value = properCaseString;
 }
 sentenceCase.onclick = function () {
+    j = 0;
     stringToChange = textarea.value.toLowerCase();
     stringToChange = stringToChange.trim();
     stringCut = stringToChange.split(".");
@@ -65,4 +76,7 @@ sentenceCase.onclick = function () {
     }
     sentenceCaseString = stringCut.join(".");
     textarea.value = sentenceCaseString;
+}
+downloadButton.onclick = function () {
+    download("text.txt", textarea.value);
 }
