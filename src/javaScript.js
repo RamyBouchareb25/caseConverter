@@ -39,7 +39,7 @@ properCase.onclick = function () {
     stringCut = stringToChange.split(" ");
     numberOfWords = stringCut.length;
     for (let l=0 ; l<numberOfWords ; l++) {
-        stop2 = false;
+        stop = false;
         while (!stop && k<=stringCut[l].length) {
             if (stringCut[l][k].match(regex) === null && stringCut[l][k].match(regex2) === null){
                 k++;
